@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --task-text-color: rgb(210, 210, 210);
+    --task-hover-color: rgb(100, 100, 100);
+}
+
+/* Please find a better way to do this... */
+*,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+    --primary-color: hsl(200, 100%, var(--lightness, 50%));
+    --secondary-color: hsl(0, 0%, var(--lightness, 33%));
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: background-color 200ms;
+}
+
+*:not(.material-icons) {
+    font-family: "Roboto", Arial, sans-serif;
+}
+
+.material-icons {
+    pointer-events: none;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: max-content auto max-content;
+    width: 350px;
+    height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 5px black;
+}
+
+.top-bar {
+    background-color: var(--primary-color);
+    padding: 10px 0px;
+}
+
+.top-bar .heading {
+    font-size: 45px;
+    text-align: center;
+    color: white;
+    font-weight: 900;
+    letter-spacing: 1.25px;
+}
+
+.tasks-list {
+    list-style: none;
+    background-color: var(--secondary-color);
+    padding: 10px;
+    overflow: auto;
+}
+
+.tasks-list::-webkit-scrollbar {
+    width: 7px;
+}
+
+.tasks-list::-webkit-scrollbar-track,
+.tasks-list::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color);
+}
+
+.tasks-list::-webkit-scrollbar-track {
+    --lightness: 30%;
+}
+
+.tasks-list::-webkit-scrollbar-thumb {
+    --lightness: 50%;
+    border-radius: 50px;
+}
+
+.tasks-list::-webkit-scrollbar-thumb:hover {
+    --lightness: 60%;
+}
+
+.task {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary-color);
+    color: var(--task-text-color);
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 1.1px;
+    cursor: pointer;
+    padding: 15px;
+    margin: 10px 0px;
+    border-radius: 8px;
+}
+
+.task:first-of-type {
+    margin-bottom: 10px;
+}
+
+.task:last-of-type {
+    margin-top: 10px;
+}
+
+.task:hover {
+    background-color: var(--task-hover-color);
+}
+
+.task.completed::before {
+    position: absolute;
+    content: "";
+    background-color: rgb(220, 220, 220);
+    left: 50%;
+    height: 2px;
+    width: 66%;
+    border-radius: 50px;
+    transform: translate(-50%);
+}
+
+.icon-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 8px;
+    user-select: none;
+}
+
+.delete-button {
+    background-color: transparent;
+    color: red;
+}
+
+.delete-button:hover {
+    --lightness: 50%;
+    background-color: var(--secondary-color);
+}
+
+.delete-button:active {
+    --lightness: 55%;
+}
+
+.add-button {
+    --lightness: 45%;
+
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.add-button:hover {
+    --lightness: 40%;
+}
+
+.add-button:active {
+    --lightness: 35%;
+}
+
+.add-container {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--primary-color);
+    padding: 10px;
+}
+
+.add-container .add-input {
+    --lightness: 45%;
+
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 0.2em 0.5em;
+    border-radius: 0.5em;
+    border: none;
+}
+
+.add-container .add-input:focus {
+    outline: none;
+}
+
+.add-container .add-input:hover,
+.add-container .add-input:focus {
+    --lightness: 40%;
+}
